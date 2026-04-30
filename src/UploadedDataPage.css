@@ -1,0 +1,213 @@
+/* ===============================
+   UploadedDataPage.css
+   DMR Uploaded Drawings Page
+================================= */
+
+/* Page Title */
+h3 {
+  letter-spacing: 0.5px;
+  font-size: 28px;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 12px;
+  border: none;
+}
+
+/* Table Styling */
+.table {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.table th {
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.table td {
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+/* ===============================
+   SAME SIZE ACTION BUTTONS
+================================= */
+
+.action-btn {
+  width: 80px;              /* same width for Edit + Delete */
+  height: 36px;             /* same height */
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: 0.2s ease;
+}
+
+.action-btn i {
+  font-size: 11px;
+  margin: 0;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* PDF View Button */
+.btn-outline-info {
+  min-width: 80px;
+  height: 34px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Filter radio buttons */
+.form-check-input {
+  cursor: pointer;
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Clear button */
+.btn-outline-secondary {
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Spinner */
+.spinner-border {
+  border-width: 0.22em;
+}
+
+/* ===============================
+   TABLE MOBILE SCROLL FIX
+================================= */
+
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+/* ===============================
+   TABLET RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+  h3 {
+    font-size: 22px !important;
+  }
+
+  .card-body {
+    padding: 14px !important;
+  }
+
+  .table th,
+  .table td {
+    font-size: 11px !important;
+    padding: 6px !important;
+    white-space: nowrap;
+  }
+
+  .form-check-label {
+    font-size: 12px !important;
+  }
+
+  /* Same size buttons on tablet */
+  .action-btn {
+    width: 70px !important;
+    height: 32px !important;
+    font-size: 10px !important;
+    gap: 3px;
+  }
+
+  .action-btn i {
+    font-size: 10px !important;
+  }
+
+  .btn-outline-info {
+    min-width: 70px !important;
+    height: 30px !important;
+    font-size: 10px !important;
+  }
+
+  .btn-outline-secondary {
+    font-size: 11px !important;
+  }
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================= */
+
+@media (max-width: 576px) {
+  body,
+  .container,
+  .card,
+  .table,
+  .form-label,
+  .btn {
+    font-size: 12px !important;
+  }
+
+  h3 {
+    font-size: 18px !important;
+  }
+
+  .card-body {
+    padding: 12px !important;
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px !important;
+    padding: 5px !important;
+    white-space: nowrap;
+  }
+
+  .form-check-label {
+    font-size: 11px !important;
+  }
+
+  /* EXACT SAME SIZE buttons on mobile */
+  .action-btn {
+    width: 64px !important;
+    height: 28px !important;
+    font-size: 9px !important;
+    border-radius: 6px !important;
+    gap: 2px;
+  }
+
+  .action-btn i {
+    font-size: 9px !important;
+  }
+
+  .btn-outline-info {
+    min-width: 64px !important;
+    height: 28px !important;
+    font-size: 9px !important;
+    border-radius: 6px !important;
+  }
+
+  .btn-outline-secondary {
+    font-size: 10px !important;
+    padding: 4px 8px !important;
+  }
+}
