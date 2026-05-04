@@ -627,15 +627,20 @@ const groupData = () => {
               {/* Direct PDF iframe */}
               {/* PDF Viewer (Mobile + Desktop Support) */}
 <iframe
-  src={selectedDrawing.fileUrl}
+  src={`https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(
+    selectedDrawing.fileUrl
+  )}#pagemode=none`}
   title={selectedDrawing.drawingName}
   className="pdf-frame"
   style={{
     width: "100%",
     height: "calc(100vh - 150px)",
     border: "none",
+    overflow: "hidden",
+    display: loadingPDF ? "none" : "block",
   }}
-></iframe>
+  onLoad={() => setLoadingPDF(false)}
+/>
             </div>
           ) : (
             <div className="text-center text-muted mt-5">
