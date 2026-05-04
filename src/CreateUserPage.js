@@ -18,7 +18,7 @@ const CreateUserPage = () => {
   const navigate = useNavigate();
 
   // Backend API from .env
-  const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_API_URL;
 
   // Create User Submit
   const handleSubmit = async (e) => {

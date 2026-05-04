@@ -65,7 +65,7 @@ const UploadedDataPage = () => {
   const [loadingMessage, setLoadingMessage] = useState("");
 
   const navigate = useNavigate();
-  const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_API_URL;
 
   // =====================================
   // Fetch Drawings

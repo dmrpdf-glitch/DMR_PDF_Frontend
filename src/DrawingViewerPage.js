@@ -41,7 +41,7 @@ const DrawingViewerPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
 
-  const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_API_URL;
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
 

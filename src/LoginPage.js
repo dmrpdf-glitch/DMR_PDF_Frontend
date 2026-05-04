@@ -11,7 +11,7 @@ export default function LoginPage({ setIsAuthenticated }) {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const API = process.env.REACT_APP_BACKEND_URL;
+const API = process.env.REACT_APP_API_URL;
 
   const handleLogin = async (e) => {
     e.preventDefault();

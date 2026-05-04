@@ -16,7 +16,7 @@ const UserInsightsPage = () => {
   const [loadingLogs, setLoadingLogs] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
 
-  const API = process.env.REACT_APP_BACKEND_URL;
+  const API = process.env.REACT_APP_API_URL;
 
   // Fetch role counts
   useEffect(() => {

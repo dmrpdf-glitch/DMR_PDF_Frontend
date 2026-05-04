@@ -5,6 +5,9 @@ const LogoutListener = () => {
   useEffect(() => {
     let inactivityTimer;
 
+    // ✅ ENV with fallback safety
+    const API = process.env.REACT_APP_API_URL || "";
+
     /*
     =====================================
     Detect refresh
@@ -33,16 +36,15 @@ const LogoutListener = () => {
 
       inactivityTimer = setTimeout(async () => {
         const username = localStorage.getItem("username");
-        if (!username) return;
+
+        // ❗ Safety check
+        if (!username || !API) return;
 
         try {
-          await axios.post(
-            "http://localhost:5000/api/log-logout",
-            {
-              username,
-              reason: "inactive-10min",
-            }
-          );
+          await axios.post(`${API}/log-logout`, {
+            username,
+            reason: "inactive-10min",
+          });
 
           localStorage.clear();
           alert("Session expired due to inactivity");
@@ -50,7 +52,7 @@ const LogoutListener = () => {
         } catch (err) {
           console.error("Auto logout error:", err);
         }
-      }, 10 * 60 * 1000);
+      }, 10 * 60 * 1000); // 10 minutes
     };
 
     /*
@@ -60,7 +62,9 @@ const LogoutListener = () => {
     */
     const saveLogout = () => {
       const username = localStorage.getItem("username");
-      if (!username) return;
+
+      // ❗ Safety check
+      if (!username || !API) return;
 
       // prevent duplicate calls
       if (sessionStorage.getItem("logoutSaved")) return;
@@ -74,19 +78,15 @@ const LogoutListener = () => {
             reason: "browser-close",
           }),
         ],
-        { type: "text/plain" }
+        { type: "application/json" }
       );
 
-      navigator.sendBeacon(
-        "http://localhost:5000/api/log-logout",
-        payload
-      );
+      navigator.sendBeacon(`${API}/log-logout`, payload);
     };
 
     /*
     =====================================
     Detect tab close / browser close
-    (MOST RELIABLE EVENT)
     =====================================
     */
     const handlePageHide = () => {
