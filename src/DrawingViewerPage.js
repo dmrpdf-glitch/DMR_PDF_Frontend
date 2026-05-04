@@ -629,7 +629,7 @@ const groupData = () => {
 <iframe
   src={`https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(
     selectedDrawing.fileUrl
-  )}`}
+  )}#navpanes=0&toolbar=1`}
   title={selectedDrawing.drawingName}
   className="pdf-frame"
   style={{
