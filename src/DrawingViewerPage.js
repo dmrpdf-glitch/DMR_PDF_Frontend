@@ -625,31 +625,21 @@ const groupData = () => {
               )}
 
               {/* Direct PDF iframe */}
-              <iframe
-                src={
-                  selectedDrawing.fileUrl
-                }
-                title={
-                  selectedDrawing.drawingName
-                }
-                className="pdf-frame"
-                style={{
-                  width: "100%",
-                  height:
-                    "calc(100vh - 150px)",
-                  border:
-                    "1px solid #ccc",
-                  display:
-                    loadingPDF
-                      ? "none"
-                      : "block",
-                }}
-                onLoad={() =>
-                  setLoadingPDF(
-                    false
-                  )
-                }
-              ></iframe>
+              {/* PDF Viewer (Mobile + Desktop Support) */}
+<iframe
+  src={`https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(
+    selectedDrawing.fileUrl
+  )}`}
+  title={selectedDrawing.drawingName}
+  className="pdf-frame"
+  style={{
+    width: "100%",
+    height: "calc(100vh - 150px)",
+    border: "none",
+    display: loadingPDF ? "none" : "block",
+  }}
+  onLoad={() => setLoadingPDF(false)}
+></iframe>
             </div>
           ) : (
             <div className="text-center text-muted mt-5">
