@@ -55,7 +55,7 @@ const DrawingViewerPage = () => {
     axios
       .get(`${API}/drawings`)
       .then((res) => {
-        const allDrawings =
+        const allDrawings =z
           res.data.drawings || [];
 
         setDrawings(allDrawings);
@@ -158,13 +158,15 @@ const groupData = () => {
     }
 
     // newest upload comes first
-grouped[category][place].unshift({
-  _id: drawing._id,
-  drawingName: drawing.drawingName,
+    grouped[category][place].unshift({
+      _id: drawing._id,
+       drawingName: drawing.drawingName,
   fileUrl: drawing.fileUrl,
   category: drawing.category,
   place: drawing.place,
-});
+    });
+  });
+
 
   // =====================================
   // Apply category + place priority
