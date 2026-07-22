@@ -55,7 +55,7 @@ const DrawingViewerPage = () => {
     axios
       .get(`${API}/drawings`)
       .then((res) => {
-        const allDrawings =z
+        const allDrawings =
           res.data.drawings || [];
 
         setDrawings(allDrawings);
@@ -167,7 +167,6 @@ const groupData = () => {
     });
   });
 
-
   // =====================================
   // Apply category + place priority
   // =====================================
@@ -263,7 +262,8 @@ const groupData = () => {
   // =====================================
   // Download PDF
   // =====================================
-const handleDownload = async (drawing) => {
+ 
+  const handleDownload = async (drawing) => {
   setDownloading(true);
 
   try {
