@@ -158,13 +158,13 @@ const groupData = () => {
     }
 
     // newest upload comes first
-    grouped[category][place].unshift({
-      _id: drawing._id,
-      drawingName:
-        drawing.drawingName,
-      fileUrl: drawing.fileUrl,
-    });
-  });
+grouped[category][place].unshift({
+  _id: drawing._id,
+  drawingName: drawing.drawingName,
+  fileUrl: drawing.fileUrl,
+  category: drawing.category,
+  place: drawing.place,
+});
 
   // =====================================
   // Apply category + place priority
@@ -261,45 +261,54 @@ const groupData = () => {
   // =====================================
   // Download PDF
   // =====================================
-  const handleDownload = async (
-    drawing
-  ) => {
-    setDownloading(true);
+const handleDownload = async (drawing) => {
+  setDownloading(true);
 
-    try {
-      const response = await fetch(
-        drawing.fileUrl
-      );
+  try {
+    const response = await fetch(drawing.fileUrl);
+    const blob = await response.blob();
 
-      const blob =
-        await response.blob();
+    const placeMap = {
+      Chennai: "CH",
+      "Oragadam-chennai": "CH",
+      Coimbatore: "CBE",
+      Madurai: "MDU",
+      Pondy: "PONDY",
+      Bangalore: "BNG",
+      Bombay: "BMY",
+      Delhi: "DELHI",
+      Thirunelveli: "TNV",
+    };
 
-      const link =
-        document.createElement("a");
+    const placeCode =
+      placeMap[drawing.place] || drawing.place;
 
-      link.href =
-        window.URL.createObjectURL(
-          blob
-        );
+    const categoryCode =
+      drawing.category === "Office"
+        ? "OFF"
+        : drawing.category === "Printing_Plant"
+        ? "PLANT"
+        : "";
 
-      link.download =
-        drawing.drawingName.endsWith(
-          ".pdf"
-        )
-          ? drawing.drawingName
-          : `${drawing.drawingName}.pdf`;
+    const fileName = `${placeCode}_${categoryCode}_${drawing.drawingName.replace(
+      /\.pdf$/i,
+      ""
+    )}.pdf`;
 
-      link.click();
+    const link = document.createElement("a");
 
-      window.URL.revokeObjectURL(
-        link.href
-      );
-    } catch (err) {
-      console.error(err);
-    }
+    link.href = window.URL.createObjectURL(blob);
+    link.download = fileName;
 
-    setDownloading(false);
-  };
+    link.click();
+
+    window.URL.revokeObjectURL(link.href);
+  } catch (err) {
+    console.error(err);
+  }
+
+  setDownloading(false);
+};
 
   // =====================================
   // Sidebar Content
